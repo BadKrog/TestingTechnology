@@ -1,18 +1,22 @@
 package testing.technology.database.entity;
 
+
+import lombok.Data;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@lombok.Data
+@Data
 @Entity
-@Table(name = "data")
-public class Data {
-    @Id
-    @Column(name = "data_id")
-    private Integer dataId;
+@Table(name = "simple")
+public class Simple {
 
-    @Column(name = "data_name")
-    private String dataName;
+    @Id
+    @Column(name = "simple_id")
+    private Integer id;
+
+    @Column(name = "simple_name")
+    private String name;
 }

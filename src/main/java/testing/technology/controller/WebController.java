@@ -11,8 +11,11 @@ import testing.technology.services.MainService;
 @RestController
 public class WebController {
     private static final Logger log = LoggerFactory.getLogger(WebController.class);
-    @Autowired
     private MainService mainService;
+
+    public WebController(MainService mainService){
+        this.mainService = mainService;
+    }
 
     @GetMapping("/")
     public String helloWorld(){
@@ -20,9 +23,9 @@ public class WebController {
     }
 
     @GetMapping("/data")
-    public String getData(@RequestParam String id){
+    public String getData(@RequestParam("id") String id){
         try{
-            Integer idInt = Integer.getInteger(id);
+            Integer idInt = Integer.parseInt(id);
             return mainService.checkDataById(idInt);
         }catch (Exception e){
             log.error(e.getMessage());
